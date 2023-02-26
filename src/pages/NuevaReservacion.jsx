@@ -16,11 +16,6 @@ export async function action({request}){
         errores.push('Todos los Campos son Obligatorios');
     }
 
-    // let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-    // if(!regex.test(email)){
-    //     errores.push("Email Invalido")
-    // }
-
     //Retornar Errores
     if(Object.keys(errores).length){
         return errores;

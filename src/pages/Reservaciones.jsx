@@ -1,17 +1,10 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 import { Reservacion } from '../components/Reservacion';
+import { obtenerReservaciones } from '../hooks/Reservacion';
 
 export function loader() {
-  const reservaciones = [
-    {
-      id: 1,
-      nombre: 'Marco Antonio Hernandez',
-      telefono: 7971209928,
-      email: "Marco7245@hotmail.com",
-      fecha: "2023-02-25"
-    },
-  ];
+  const reservaciones = obtenerReservaciones();
   return reservaciones;
 }
 
@@ -26,19 +19,19 @@ export const Reservaciones = () => {
 
       {reservaciones.length ? (
         <table className='w-full bg-white shadow mt-5 table-auto'>
-            <thead className='bg-purple-800 text-white'>
-                <tr>
-                    <th className='p-2'>Nombre</th>
-                    <th className='p-2'>Contacto</th>
-                    <th className='p-2'>Acciones</th>
-                </tr>
-            </thead>
+          <thead className='bg-purple-800 text-white'>
+            <tr>
+              <th className='p-2'>Nombre</th>
+              <th className='p-2'>Contacto</th>
+              <th className='p-2'>Acciones</th>
+            </tr>
+          </thead>
 
-            <tbody>
-                {reservaciones.map( reservacion =>(
-                  <Reservacion reservacion={reservacion} key={reservacion.id}/>
-                ))}
-            </tbody>
+          <tbody>
+            {reservaciones.map(reservacion => (
+              <Reservacion reservacion={reservacion} key={reservacion.id} />
+            ))}
+          </tbody>
         </table>
 
       ) : (
