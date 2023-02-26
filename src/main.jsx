@@ -7,6 +7,8 @@ import { NuevaReservacion ,action as nuevaReservacionAction} from './pages/Nueva
 import { Index} from './pages/Index'
 import { Reservaciones, loader as ReservacionesLoader} from './pages/Reservaciones'
 import { ErrorPage } from './components/ErrorPage'
+import { EditarCliente } from './pages/EditarCliente'
+import { Nosotros } from './pages/Nosotros'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
         path:'/Reservaciones/Nuevo',
         element: <NuevaReservacion/>,
         action: nuevaReservacionAction
+      },
+      {
+        path: '/Reservaciones/:ReservacionID/Editar',
+        element : <EditarCliente/> 
+      },
+      {
+        path : '/Nosotros',
+        element : <Nosotros/>
       }
     ]
   }

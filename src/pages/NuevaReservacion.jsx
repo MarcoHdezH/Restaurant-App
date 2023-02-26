@@ -43,7 +43,7 @@ export const NuevaReservacion = () => {
 
                 <Form method='post' noValidate>
                     <Formulario />
-                    <input type='submit' className='mt-5 w-full bg-purple-900 p-3 uppercase font-bold text-white text-lg' value="Registar Reservacion"></input>
+                    <input type='submit' className='mt-5 w-full bg-purple-900 p-3 uppercase font-bold text-white text-lg' value="Registrar Reservacion"></input>
                 </Form>
             </div>
         </>

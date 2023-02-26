@@ -13,6 +13,7 @@ export const Layout = () => {
                     <Link className={`${location.pathname=== '/' ? 'text-purple-300' : 'text-white'} text-2xl block mt-2 hover:text-purple-300 text-white text-center`} to='/'>Página Principal</Link>
                     <Link className={`${location.pathname=== '/Reservaciones' ? 'text-purple-300' : 'text-white'} text-2xl block mt-2 hover:text-purple-300 text-white text-center`} to='/Reservaciones'>Lista de Reservaciones</Link>
                     <Link className={`${location.pathname=== '/Reservaciones/Nuevo' ? 'text-purple-300' : 'text-white'} text-2xl block mt-2 hover:text-purple-300 text-white text-center`} to='/Reservaciones/Nuevo'>Nueva Reservacion</Link>
+                    <Link className={`${location.pathname=== '/Nosotros' ? 'text-purple-300' : 'text-white'} text-2xl block mt-2 hover:text-purple-300 text-white text-center`} to='/Nosotros'>Acerca de</Link>
                 </nav>
             </aside>
 
