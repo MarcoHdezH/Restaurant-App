@@ -1,0 +1,11 @@
+{
+  "reservaciones": [
+    {
+      "id": 1,
+      "nombre": "Marco Antonio Hernandez",
+      "telefono": 7971209928,
+      "email": "Marco7245@hotmail.com",
+      "fecha": "2023-02-25"
+    }
+  ]
+}

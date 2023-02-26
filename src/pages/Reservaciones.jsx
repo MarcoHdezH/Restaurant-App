@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
-import { Reservacion } from '../hooks/Reservacion';
+import { Reservacion } from '../components/Reservacion';
 
 export function loader() {
   const reservaciones = [

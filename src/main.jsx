@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { NuevaReservacion } from './pages/NuevaReservacion'
+import { NuevaReservacion, action as nuevaReservacionAction} from './pages/NuevaReservacion'
 import { Index} from './pages/Index'
 import { Reservaciones, loader as ReservacionesLoader} from './pages/Reservaciones'
 
@@ -23,7 +23,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/Reservaciones/Nuevo',
-        element: <NuevaReservacion/>
+        element: <NuevaReservacion/>,
+        action : nuevaReservacionAction
       }
     ]
   }
