@@ -8,8 +8,6 @@ export async function action({request}){
 
     const datos = Object.fromEntries(formData);
 
-    // const email = formData.get('email');
-
     //Validacion
     const errores=[];
     if(Object.values(datos)){
@@ -20,7 +18,6 @@ export async function action({request}){
     if(Object.keys(errores).length){
         return errores;
     }
-    return null;
 }
 
 export const NuevaReservacion = () => {

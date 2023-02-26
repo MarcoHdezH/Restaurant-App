@@ -5,12 +5,13 @@ import { obtenerReservaciones } from '../hooks/Reservacion';
 
 export function loader() {
   const reservaciones = obtenerReservaciones();
-  return reservaciones;
 }
 
 export const Reservaciones = () => {
 
   const reservaciones = useLoaderData();
+
+  //Error Boundries
 
   return (
     <>

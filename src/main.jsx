@@ -6,6 +6,7 @@ import { Layout } from './components/Layout'
 import { NuevaReservacion ,action as nuevaReservacionAction} from './pages/NuevaReservacion'
 import { Index} from './pages/Index'
 import { Reservaciones, loader as ReservacionesLoader} from './pages/Reservaciones'
+import { ErrorPage } from './components/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       {
         path:'/Reservaciones/',
         element: <Reservaciones/>,
-        loader:ReservacionesLoader
+        loader:ReservacionesLoader,
+        errorElement: <ErrorPage/>
       },
       {
         path:'/Reservaciones/Nuevo',
