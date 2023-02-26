@@ -4,8 +4,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { NuevaReservacion } from './pages/NuevaReservacion'
-import { Index } from './pages/Index'
-import { Reservaciones } from './pages/Reservaciones'
+import { Index} from './pages/Index'
+import { Reservaciones, loader as ReservacionesLoader} from './pages/Reservaciones'
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/Reservaciones/',
-        element: <Reservaciones/>
+        element: <Reservaciones/>,
+        loader:ReservacionesLoader
       },
       {
         path:'/Reservaciones/Nuevo',
