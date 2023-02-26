@@ -1,16 +1,16 @@
 import React from 'react'
-import { useNavigate, Form, useActionData } from 'react-router-dom'
+import { useNavigate, Form, useActionData, redirect } from 'react-router-dom'
 import { Formulario } from '../components/Formulario';
 import {Error} from '../components/Error';
+import { agregarReservacion } from '../hooks/agregarReservacion';
 
 export async function action({request}){
     const formData= await request.formData();
-
     const datos = Object.fromEntries(formData);
 
     //Validacion
     const errores=[];
-    if(Object.values(datos)){
+    if(Object.values(datos).includes('')){
         errores.push('Todos los Campos son Obligatorios');
     }
 
@@ -18,6 +18,10 @@ export async function action({request}){
     if(Object.keys(errores).length){
         return errores;
     }
+
+    await agregarReservacion(datos);
+
+    return redirect('/Reservaciones');
 }
 
 export const NuevaReservacion = () => {
@@ -37,7 +41,7 @@ export const NuevaReservacion = () => {
             <div className='bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-10'>
             {errores?.length && errores.map( (error,i) => <Error key={i}>{error}</Error>)}
 
-                <Form method='post'>
+                <Form method='post' noValidate>
                     <Formulario />
                     <input type='submit' className='mt-5 w-full bg-purple-900 p-3 uppercase font-bold text-white text-lg' value="Registar Reservacion"></input>
                 </Form>
