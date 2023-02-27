@@ -1,5 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Form,redirect } from 'react-router-dom';
+
+export async function action({params}){
+
+}
 
 export const Reservacion = ({ reservacion }) => {
 
@@ -21,7 +25,11 @@ export const Reservacion = ({ reservacion }) => {
 
       <td className='p-6 flex justify-items-center text-center gap-10'>
         <button type='button' onClick={()=>navigate(`/Reservaciones/${id}/Editar`)} className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
-        <button type='button' onClick={()=>navigate(`/Reservaciones/${id}/Eliminar`)} className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
+
+        <Form method='POST' action={`/Reservacion/${id}/Eliminar`}>
+          <button type='submit' className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
+        </Form>
+
       </td>
     </tr>
   )
