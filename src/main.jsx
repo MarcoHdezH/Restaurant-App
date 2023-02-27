@@ -10,6 +10,7 @@ import { ErrorPage } from './components/ErrorPage'
 import { EditarReservacion, loader as editarReservacionLouder, action as editarReservacionAction} from './pages/EditarReservacion'
 import { Nosotros } from './pages/Nosotros'
 import { EliminarReservacion } from './pages/EliminarReservacion'
+import {action as eliminarReservacionAction} from './components/Reservacion';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Reservaciones/:ReservacionID/Eliminar',
-        element: <EliminarReservacion/>
+        action: eliminarReservacionAction
       },
       {
         path : '/Nosotros',

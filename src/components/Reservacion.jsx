@@ -1,13 +1,15 @@
 import React from 'react'
-import { useNavigate,Form,redirect } from 'react-router-dom';
+import { useNavigate, Form, redirect } from 'react-router-dom';
+import { eliminarReservacion } from '../hooks/eliminarReservacion';
 
-export async function action({params}){
-
+export async function action({ params }) {
+  await eliminarReservacion(params.ReservacionID);
+  return redirect('/Reservaciones');
 }
 
 export const Reservacion = ({ reservacion }) => {
 
-  const { nombre,email,telefono,fecha,id} = reservacion;
+  const { nombre, email, telefono, fecha, id } = reservacion;
   const navigate = useNavigate();
 
   return (
@@ -24,9 +26,9 @@ export const Reservacion = ({ reservacion }) => {
       </td>
 
       <td className='p-6 flex justify-items-center text-center gap-10'>
-        <button type='button' onClick={()=>navigate(`/Reservaciones/${id}/Editar`)} className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
+        <button type='button' onClick={() => navigate(`/Reservaciones/${id}/Editar`)} className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
 
-        <Form method='POST' action={`/Reservacion/${id}/Eliminar`}>
+        <Form method='POST' action={`/Reservaciones/${id}/Eliminar`}>
           <button type='submit' className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
         </Form>
 
