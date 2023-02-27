@@ -7,8 +7,9 @@ import { NuevaReservacion ,action as nuevaReservacionAction} from './pages/Nueva
 import { Index} from './pages/Index'
 import { Reservaciones, loader as ReservacionesLoader} from './pages/Reservaciones'
 import { ErrorPage } from './components/ErrorPage'
-import { EditarCliente } from './pages/EditarCliente'
+import { EditarReservacion, loader as editarReservacionLouder, action as editarReservacionAction} from './pages/EditarReservacion'
 import { Nosotros } from './pages/Nosotros'
+import { EliminarReservacion } from './pages/EliminarReservacion'
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,20 @@ const router = createBrowserRouter([
       {
         path:'/Reservaciones/Nuevo',
         element: <NuevaReservacion/>,
-        action: nuevaReservacionAction
+        action: nuevaReservacionAction,
+        errorElement : <ErrorPage/>
       },
       {
         path: '/Reservaciones/:ReservacionID/Editar',
-        element : <EditarCliente/> 
+        element : <EditarReservacion/>,
+        loader: editarReservacionLouder,
+        action: editarReservacionAction,
+        errorElement: <ErrorPage/>
+
+      },
+      {
+        path: '/Reservaciones/:ReservacionID/Eliminar',
+        element: <EliminarReservacion/>
       },
       {
         path : '/Nosotros',

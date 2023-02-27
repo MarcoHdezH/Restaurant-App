@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Reservacion = ({ reservacion }) => {
 
-  const { nombre,email,telefono,fecha} = reservacion;
+  const { nombre,email,telefono,fecha,id} = reservacion;
+  const navigate = useNavigate();
+
   return (
     <tr className='border-b'>
       <td className='p-6 space-y-2'>
@@ -17,9 +20,8 @@ export const Reservacion = ({ reservacion }) => {
       </td>
 
       <td className='p-6 flex justify-items-center text-center gap-10'>
-        <button type='button' className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
-        <button type='button' className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
-
+        <button type='button' onClick={()=>navigate(`/Reservaciones/${id}/Editar`)} className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
+        <button type='button' onClick={()=>navigate(`/Reservaciones/${id}/Eliminar`)} className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
       </td>
     </tr>
   )
