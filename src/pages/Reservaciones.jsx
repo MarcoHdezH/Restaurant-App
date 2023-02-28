@@ -5,6 +5,7 @@ import { obtenerReservaciones } from '../hooks/Reservacion';
 
 export function loader() {
   const reservaciones = obtenerReservaciones();
+  console.log(reservaciones)
   return reservaciones;
 }
 

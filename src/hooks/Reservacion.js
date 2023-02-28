@@ -1,3 +1,5 @@
+import { collection, onSnapshot} from "firebase/firestore";
+import { db } from "./firebase";
 
 //Obtiene las Reservaciones para Mostrar en Pantalla
 export async function obtenerReservaciones(){

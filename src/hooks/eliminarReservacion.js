@@ -1,3 +1,4 @@
+import { db } from "./firebase";
 
 export async function eliminarReservacion(id) {
     try {

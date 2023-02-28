@@ -1,4 +1,6 @@
 
+import { db } from "./firebase";
+
 export async function actualizarReservacion(id,datos){
     try{
 

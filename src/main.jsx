@@ -11,6 +11,7 @@ import { EditarReservacion, loader as editarReservacionLouder, action as editarR
 import { Nosotros } from './pages/Nosotros'
 import { EliminarReservacion } from './pages/EliminarReservacion'
 import {action as eliminarReservacionAction} from './components/Reservacion';
+import { App } from './pages/app'
 
 const router = createBrowserRouter([
   {
@@ -23,27 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/Reservaciones/',
-        element: <Reservaciones/>,
-        loader:ReservacionesLoader,
-        errorElement: <ErrorPage/>
-      },
-      {
-        path:'/Reservaciones/Nuevo',
-        element: <NuevaReservacion/>,
-        action: nuevaReservacionAction,
-        errorElement : <ErrorPage/>
-      },
-      {
-        path: '/Reservaciones/:ReservacionID/Editar',
-        element : <EditarReservacion/>,
-        loader: editarReservacionLouder,
-        action: editarReservacionAction,
-        errorElement: <ErrorPage/>
-
-      },
-      {
-        path: '/Reservaciones/:ReservacionID/Eliminar',
-        action: eliminarReservacionAction
+        element: <App/>,
       },
       {
         path : '/Nosotros',
