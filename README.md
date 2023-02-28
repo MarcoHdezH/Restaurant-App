@@ -1,5 +1,4 @@
-# Proyecto Restaurante App con React, Tailwindcss y JSON-Server
+# Proyecto Restaurante App con React, Tailwindcss y (Provisionalmente) LocalStorage
 
-Aun no esta Terminado...
 
 Despliegue: https://celebrated-cobbler-8a33bc.netlify.app/
