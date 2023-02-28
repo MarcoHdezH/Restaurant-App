@@ -1,5 +1,6 @@
 import React from 'react'
 import image from '../../public/images/Kommi.webp';
+import { Footer } from '../components/Footer';
 
 export const Nosotros = () => {
     return (
@@ -8,6 +9,8 @@ export const Nosotros = () => {
             <div className="p-10 flex Centrar">
                 <img src={image} />
             </div>
+
+            <Footer/>
         </>
     )
 }

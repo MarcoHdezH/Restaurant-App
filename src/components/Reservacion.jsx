@@ -23,7 +23,7 @@ export const Reservacion = ({ reservacion, setReservacion, eliminarReservacion }
                 <span className="font-normal normal-case">{fecha}</span>
             </p>
 
-            <div className="lg:flex justify-evenly p-10 mt-10 text-center">
+            {/* <div className="lg:flex justify-evenly p-10 mt-10 text-center">
                 <button
                     type="button"
                     className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
@@ -35,7 +35,8 @@ export const Reservacion = ({ reservacion, setReservacion, eliminarReservacion }
                     className="py-2 px-10 mt-10 lg:mt-0 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
                     onClick={handleEliminar}
                 >Eliminar</button>
-            </div>
+            </div> */}
+            
         </div>
     )
 }

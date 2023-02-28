@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Footer } from '../components/Footer';
 import {Formulario} from "../components/Formulario"
 import {Header} from "../components/Header"
 import {ListadoReservaciones} from "../components/ListadoReservaciones"
@@ -19,8 +20,7 @@ export function App() {
 
   return (
     <div className="container mx-auto mt-20">
-      <Header />
-
+      <Header/>
       <div className="mt-12 md:flex">
           <Formulario 
             reservaciones={reservaciones}
@@ -34,7 +34,6 @@ export function App() {
             eliminarReservacion={eliminarReservacion}
           />
       </div>
-
     </div>
   )
 }

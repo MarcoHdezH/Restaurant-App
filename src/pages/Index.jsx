@@ -3,6 +3,7 @@ import image from '../../public/images/Kommi.webp';
 import image1 from '../../public/images/Image 1.jpg';
 import image2 from '../../public/images/Image 2.jpg';
 import { Footer } from '../components/Footer';
+import { Sucursales } from '../components/Sucursales';
 
 export const Index = () => {
   return (
@@ -44,6 +45,9 @@ export const Index = () => {
 
       </section>
 
+      <section className='m-10'>
+          <Sucursales/>
+      </section>
       <Footer/>
     </>
   )

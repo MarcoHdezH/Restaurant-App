@@ -123,11 +123,13 @@ export const Formulario = ({ reservaciones, setReservaciones, reservacion, setRe
 
                 <div className="mb-5">
                     <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
-                        Alta
+                        Fecha de Reservacion
                     </label>
                     <input
                         id="alta"
                         type="date"
+                        min='2023-03-05'
+                        max='2023-12-31'
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={fecha}
                         onChange={(e) => setFecha(e.target.value)}
