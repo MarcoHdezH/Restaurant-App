@@ -2,8 +2,8 @@
 export function Header() {
     return (
         <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto">
-            Seguimiento Pacientes {""} 
-            <span className="text-indigo-700">Veterinaria</span>
+            Reservaciones {""} 
+            <span className="text-purple-900 text-center">Tokyo Dinner Restaurant</span>
         </h1>
     )
 }

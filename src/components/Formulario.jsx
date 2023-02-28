@@ -1,74 +1,22 @@
-// export const Formulario = ({ reservacion }) => {
-//     return (
-//         <>
-//             <div className="mb-4">
-//                 <label className="text-gray-800" htmlFor="nombre">Nombre(s):</label>
-//                 <input id="nombre" 
-//                        type="text" 
-//                        className="mt-2 block w-full p-3 bg-gray-50" 
-//                        placeholder="A nombre de quien la Reservacion" 
-//                        name="nombre" 
-//                        defaultValue={reservacion?.nombre}/>
-//             </div>
-
-//             <div className="mb-4">
-//                 <label className="text-gray-800" htmlFor="email">E-mail:</label>
-//                 <input id="email" 
-//                        type="email" 
-//                        className="mt-2 block w-full p-3 bg-gray-50" 
-//                        placeholder="Email de Contacto" 
-//                        name="email" 
-//                        defaultValue={reservacion?.email}/>
-//             </div>
-
-//             <div className="mb-4">
-//                 <label className="text-gray-800" htmlFor="telefono">Teléfono:</label>
-//                 <input id="telefono" 
-//                        type="number" 
-//                        className="mt-2 block w-full p-3 bg-gray-50" 
-//                        placeholder="Teléfono de Contacto" 
-//                        name="telefono" 
-//                        defaultValue={reservacion?.telefono} />
-//             </div>
-            
-//             <div className="mb-4">
-//                 <label className="text-gray-800" htmlFor="telefono">Fecha de Reservacion:</label>
-//                 <input id="fecha" 
-//                        type="date" 
-//                        className="mt-2 block w-full p-3 bg-gray-50" 
-//                        name="fecha" 
-//                        min="2023-03-01" 
-//                        max="2023-12-31" 
-//                        defaultValue={reservacion?.fecha}/>
-//             </div>
-//         </>
-//     )
-// }
-
 import { useState, useEffect } from 'react';
-import {Error} from './Error'
+import { Error } from './Error'
 
-export const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
+export const Formulario = ({ reservaciones, setReservaciones, reservacion, setReservacion }) => {
     const [nombre, setNombre] = useState('');
-    const [propietario, setPropietario] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
-    const [sintomas, setSintomas] = useState('');
 
     const [error, setError] = useState(false)
 
     useEffect(() => {
-        if( Object.keys(paciente).length > 0  ) {
-            setNombre(paciente.nombre)
-            setPropietario(paciente.propietario)
-            setEmail(paciente.email)
-            setFecha(paciente.fecha)
-            setSintomas(paciente.sintomas)
+        if (Object.keys(reservacion).length > 0) {
+            setNombre(reservacion.nombre)
+            setTelefono(reservacion.telefono)
+            setEmail(reservacion.email)
+            setFecha(reservacion.fecha)
         }
-    }, [paciente])
-
-
-    
+    }, [reservacion])
 
     const generarId = () => {
         const random = Math.random().toString(36).substr(2);
@@ -80,88 +28,83 @@ export const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) =
         e.preventDefault();
 
         // Validación del Formulario
-        if( [ nombre, propietario, email, fecha, sintomas ].includes('') ) {
+        if ([nombre, telefono, email, fecha].includes('')) {
             console.log('Hay Al Menos un campo vacio')
 
             setError(true)
             return;
-        } 
-        
-        setError(false)
-
-
-        // Objeto de Paciente
-        const objetoPaciente = {
-            nombre, 
-            propietario, 
-            email, 
-            fecha, 
-            sintomas
         }
 
-        if(paciente.id) {
-            // Editando el Registro
-            objetoPaciente.id = paciente.id
-            const pacientesActualizados = pacientes.map( pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState )
+        setError(false)
 
-            setPacientes(pacientesActualizados)
-            setPaciente({})
+        const objetoReservacion = {
+            nombre,
+            telefono,
+            email,
+            fecha,
+        }
+
+        if (reservacion.id) {
+            // Editando el Registro
+            objetoReservacion.id = reservacion.id
+            const reservacionesActualizados = reservaciones.map(reservacionState => reservacionState.id === reservacion.id ? objetoReservacion : reservacionState)
+
+            setReservaciones(reservacionesActualizados)
+            setReservacion({})
 
         } else {
             // Nuevo registro
-            objetoPaciente.id = generarId();
-            setPacientes([...pacientes, objetoPaciente]);
+            objetoReservacion.id = generarId();
+            setReservaciones([...reservaciones, objetoReservacion]);
         }
 
         // Reiniciar el form
         setNombre('')
-        setPropietario('')
+        setTelefono('')
         setEmail('')
         setFecha('')
-        setSintomas('')
 
     }
 
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
-            <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
+            <h2 className="font-black text-3xl text-center">Añadir Reservacion</h2>
 
             <p className="text-lg mt-5 text-center mb-10">
-                Añade Pacientes y {''}
-                <span className="text-indigo-600 font-bold ">Administralos</span>
+                Añade una Reservacion
             </p>
 
-            <form 
+            <form
                 onSubmit={handleSubmit}
                 className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
             >
-                { error &&  <Error><p>Todos los campos son obligatorios</p></Error>}
+                {error && <Error><p>Todos los campos son obligatorios</p></Error>}
                 <div className="mb-5">
-                    <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
-                        Nombre Mascota
+                    <label htmlFor="nombre" className="block text-gray-700 uppercase font-bold">
+                        Nombre
                     </label>
                     <input
                         id="mascota"
                         type="text"
-                        placeholder="Nombre de la Mascota"
+                        placeholder="Nombre"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={nombre}
-                        onChange={ (e) => setNombre(e.target.value) }
-                    />  
+                        onChange={(e) => setNombre(e.target.value)}
+                    />
                 </div>
 
                 <div className="mb-5">
-                    <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">
-                        Nombre Propietario
+                    <label htmlFor="telefono" className="block text-gray-700 uppercase font-bold">
+                        Telefono Contacto
                     </label>
                     <input
-                        id="propietario"
-                        type="text"
-                        placeholder="Nombre del Propietario"
+                        id="telefono"
+                        type="number"
+                        placeholder="222-222-2222"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        value={propietario}
-                        onChange={ (e) => setPropietario(e.target.value) }
-                    />  
+                        value={telefono}
+                        onChange={(e) => setTelefono(e.target.value)}
+                    />
                 </div>
 
                 <div className="mb-5">
@@ -174,8 +117,8 @@ export const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) =
                         placeholder="Email Contacto Propietario"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={email}
-                        onChange={ (e) => setEmail(e.target.value) }
-                    />  
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
 
                 <div className="mb-5">
@@ -187,27 +130,14 @@ export const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) =
                         type="date"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={fecha}
-                        onChange={ (e) => setFecha(e.target.value) }
-                    />  
-                </div>
-
-                <div className="mb-5">
-                    <label htmlFor="sintomas" className="block text-gray-700 uppercase font-bold">
-                        Síntomas
-                    </label>
-                    <textarea 
-                        id="sintomas"
-                        className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        placeholder="Describe los Síntomas"
-                        value={sintomas}
-                        onChange={ (e) => setSintomas(e.target.value) }
+                        onChange={(e) => setFecha(e.target.value)}
                     />
                 </div>
 
                 <input
                     type="submit"
                     className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-                    value={ paciente.id ? 'Editar Paciente' : 'Agregar Paciente' }
+                    value={reservacion.id ? 'Editar Reservacion' : 'Agregar Reservacion'}
                 />
             </form>
         </div>

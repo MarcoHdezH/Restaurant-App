@@ -1,38 +1,41 @@
-import React from 'react'
-import { useNavigate, Form, redirect } from 'react-router-dom';
-import { eliminarReservacion } from '../hooks/eliminarReservacion';
+export const Reservacion = ({ reservacion, setReservacion, eliminarReservacion }) => {
+    const { nombre, telefono, email, fecha, id } = reservacion
 
-export async function action({ params }) {
-  await eliminarReservacion(params.ReservacionID);
-  return redirect('/Reservaciones');
-}
+    const handleEliminar = () => {
+        eliminarReservacion(id)
+    }
 
-export const Reservacion = ({ reservacion }) => {
+    return (
+        <div className="lg:mx-5 lg:my-10 bg-white shadow-md px-5 py-10 rounded-xl">
+            <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {''}
+                <span className="font-normal normal-case">{nombre}</span>
+            </p>
 
-  const { nombre, email, telefono, fecha, id } = reservacion;
-  const navigate = useNavigate();
+            <p className="font-bold mb-3 text-gray-700 uppercase">Telefono: {''}
+                <span className="font-normal normal-case">{telefono}</span>
+            </p>
 
-  return (
-    <tr className='border-b'>
-      <td className='p-6 space-y-2'>
-        <p className='text-xl text-gray-800 font-bold'>{nombre}</p>
-        <p className='text-gray-800'>Fecha Reservacion: {fecha}</p>
+            <p className="font-bold mb-3 text-gray-700 uppercase">Email: {''}
+                <span className="font-normal normal-case">{email}</span>
+            </p>
 
-      </td>
+            <p className="font-bold mb-3 text-gray-700 uppercase">Fecha Reservacion: {''}
+                <span className="font-normal normal-case">{fecha}</span>
+            </p>
 
-      <td className='p-6 text-center'>
-        <p className='text-gray-800'> <span className='text-gray-800 uppercase font-bold'>Email: </span>{email}</p>
-        <p className='text-gray-800'> <span className='text-gray-800 uppercase font-bold'>Teléfono: </span>{telefono}</p>
-      </td>
+            <div className="lg:flex justify-evenly p-10 mt-10 text-center">
+                <button
+                    type="button"
+                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                    onClick={() => setReservacion(reservacion)}
+                >Editar</button>
 
-      <td className='p-6 flex justify-items-center text-center gap-10'>
-        <button type='button' onClick={() => navigate(`/Reservaciones/${id}/Editar`)} className='text-purple-500 hover:text-purple-900 uppercase font-bold text-xs'>Editar</button>
-
-        <Form method='POST' action={`/Reservaciones/${id}/Eliminar`}>
-          <button type='submit' className='text-red-500 hover:text-red-900 uppercase font-bold text-xs'>Eliminar</button>
-        </Form>
-
-      </td>
-    </tr>
-  )
+                <button
+                    type="button"
+                    className="py-2 px-10 mt-10 lg:mt-0 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                    onClick={handleEliminar}
+                >Eliminar</button>
+            </div>
+        </div>
+    )
 }

@@ -1,45 +1,37 @@
 import { useState, useEffect } from 'react'
 import {Formulario} from "../components/Formulario"
 import {Header} from "../components/Header"
-import {ListadoPacientes} from "../components/ListadoPacientes"
+import {ListadoReservaciones} from "../components/ListadoReservaciones"
 
 export function App() {
 
-  const [pacientes, setPacientes] = useState(JSON.parse(localStorage.getItem('pacientes')) ?? []);
-  const [paciente, setPaciente] = useState({});
-
-//   useEffect(() => {
-//     const obtenerLS = () => {
-//       const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
-//       setPacientes(pacientesLS)
-//     }
-//     obtenerLS();
-//   }, []);
+  const [reservaciones, setReservaciones] = useState(JSON.parse(localStorage.getItem('reservaciones')) ?? []);
+  const [reservacion, setReservacion] = useState({});
 
   useEffect(() => {
-    localStorage.setItem('pacientes', JSON.stringify( pacientes ));
-  }, [pacientes])
+    localStorage.setItem('reservaciones', JSON.stringify( reservaciones ));
+  }, [reservaciones])
 
-  const eliminarPaciente = id => {
-    const pacientesActualizados = pacientes.filter( paciente => paciente.id !== id);
-    setPacientes(pacientesActualizados)
+  const eliminarReservacion = id => {
+    const reservacionesActualizados = reservaciones.filter( reservacion => reservacion.id !== id);
+    setReservaciones(reservacionesActualizados)
   }
 
   return (
     <div className="container mx-auto mt-20">
       <Header />
 
-      <div className="mt-12 md:flex justify-center lg:flex justify-evenly">
+      <div className="mt-12 md:flex">
           <Formulario 
-            pacientes={pacientes}
-            setPacientes={setPacientes}
-            paciente={paciente}
-            setPaciente={setPaciente}
+            reservaciones={reservaciones}
+            setReservaciones={setReservaciones}
+            reservacion={reservacion}
+            setReservacion={setReservacion}
           />
-          <ListadoPacientes 
-            pacientes={pacientes}
-            setPaciente={setPaciente}
-            eliminarPaciente={eliminarPaciente}
+          <ListadoReservaciones
+            reservaciones={reservaciones}
+            setReservacion={setReservacion}
+            eliminarReservacion={eliminarReservacion}
           />
       </div>
 
